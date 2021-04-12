@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Note</title>
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+</head>
+<body>
+<div th:include="elements :: navigation"></div>
+<div class="content-container bg-light">
+    <div class="container-fluid">
+
+           <!-- <div class="card">
+                <div class="card-block">
+                    <h4 class="card-title">Your Note</h4>
+                    <p class="card-text">See what have you saved.</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" >Title: <div th:text="${note.title}"></div></li>
+                    <li class="list-group-item">Description: <div th:text="${note.description}"></div></li>
+                    <li class="list-group-item">Date: <div th:text="${note.date}"></div></li>
+                </ul>
+                <div class="card-block">
+                    <div class="btn-group" role="group" aria-label="...">
+
+                        <a href="" class="btn btn-danger">Edit</a>
+                        <a href="" class="btn btn-success">Delete</a>
+                    </div>
+
+                </div>
+            </div>-->
+
+        <div class="card" >
+
+            <div class="card-body text-center">
+                <h5 class="card-title">Your Note</h5>
+                <p class="card-text">
+                    See what have you saved.
+                </p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" >Title: <div th:text="${note.title}"></div></li>
+                <li class="list-group-item">Description:<div th:text="${note.description}"></div></li>
+                <li class="list-group-item">Date of note:<div th:text="${#dates.format(note.date, 'dd-MM-yyyy HH:mm')}"></div></li>
+            </ul>
+            <div class="card-body text-center">
+                <div class="btn-group" role="group" >
+
+                    <a th:href="@{'/edit-note/' + ${note.id} }" class="btn btn-danger">Edit</a>
+                    <a th:href="@{'/delete/' + ${note.id} }" class="btn btn-success">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
